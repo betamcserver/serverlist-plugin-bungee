@@ -1,19 +1,27 @@
 plugins {
-	id 'java'
-	id 'eclipse'
+	id("java")
 }
 
-targetCompatibility = 8;
-sourceCompatibility = 8;
+group = "uk.betacraft"
+version = "2.1.2"
 
-jar {
-	manifest {
-		attributes(
-			'Class-Path': 'BetacraftPing/gson.jar'
-		)
+repositories {
+	mavenCentral()
+	maven {
+		url = "https://repository.legacyminecraft.com/repository/maven-public/"
 	}
 }
 
 dependencies {
-	implementation files('lib/BungeeCord.jar')
+	implementation("com.legacyminecraft:bungeeposeidon-proxy:1.0.0-rc-2")
+}
+
+tasks.processResources {
+	expand(Map.of("version", project.version))
+}
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(25)
+	}
 }
