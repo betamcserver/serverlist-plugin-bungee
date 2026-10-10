@@ -20,6 +20,9 @@ jobs:
           distribution: 'temurin'
           java-version: 25
 
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v6
+
       - name: Get the version from build.gradle.kts
         id: get_version
         run: |

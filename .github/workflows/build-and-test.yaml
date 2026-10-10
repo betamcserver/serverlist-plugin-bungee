@@ -24,6 +24,9 @@ jobs:
           distribution: 'temurin'
           java-version: 25
 
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v6
+
       - name: build application
         shell: bash
         run: ./gradlew clean build
